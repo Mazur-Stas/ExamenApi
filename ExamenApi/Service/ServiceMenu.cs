@@ -19,11 +19,7 @@ namespace ExamenApi.Service;
         _animalApiService = new AnimalApiService();
         _animalService = new AnimalService();
     }
-    public ServiceMenu(AnimalApiService animalApiService, AnimalService animalService)
-    {
-        _animalApiService = animalApiService;
-        _animalService = animalService;
-    }
+
 
     public async Task Menu()
     {

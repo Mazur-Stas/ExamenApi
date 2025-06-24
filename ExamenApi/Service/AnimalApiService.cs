@@ -24,12 +24,6 @@ namespace ExamenApi.Service;
         _http.BaseAddress = new Uri("https://aes.shenlu.me/api/v1/");
         _logger = new LoggerService();
     }
-    public AnimalApiService(HttpClient http,LoggerService logger)
-    {
-        _http = http;
-        _http.BaseAddress = new Uri("https://aes.shenlu.me/api/v1/");
-        _logger = logger;
-    }
 
     public async Task<List<Animal>> GetAllAsync()
     {

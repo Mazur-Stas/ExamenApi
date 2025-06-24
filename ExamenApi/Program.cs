@@ -11,7 +11,6 @@ namespace ExamenApi
         static async Task Main(string[] args)
         {
             ServiceMenu menu = new ServiceMenu();
-
             await menu.Menu();
 
 

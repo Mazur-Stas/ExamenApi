@@ -21,11 +21,7 @@ namespace ExamenApi.Service;
         _animalRepository = new AnimalRepository();
         _logger = new LoggerService();
     }
-    public AnimalService(IAnimalRepository animalRepository, LoggerService logger)
-    {
-        _animalRepository = animalRepository;
-        _logger = logger;
-    }
+
     public async Task<IEnumerable<Animal>> GetAll()
     {
         _logger.Info($"Get all animals");
