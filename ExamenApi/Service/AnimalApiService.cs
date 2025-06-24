@@ -9,6 +9,7 @@ using ExamenApi.Core.Models;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using Microsoft.Extensions.Logging;
+using Azure;
 
 
 namespace ExamenApi.Service;
@@ -37,11 +38,7 @@ namespace ExamenApi.Service;
     public async Task<Animal> SearchByNameAsync(string name)
     {
         var r = await _http.GetAsync($"species?common_name={name}");
-        if (!r.IsSuccessStatusCode)
-        {
-            throw new HttpRequestException($"API call failed with status code: {r.StatusCode}");
-        }
-
+        r.EnsureSuccessStatusCode();
         var json = await r.Content.ReadAsStreamAsync();
         var animals = JsonSerializer.Deserialize<List<Animal>>(json);
         return animals.FirstOrDefault();
@@ -50,11 +47,7 @@ namespace ExamenApi.Service;
     public async Task<List<Animal>> GetByCountryCodeAsync(string code)
     {
         var r = await _http.GetAsync("species");
-        if (!r.IsSuccessStatusCode)
-        {
-            throw new HttpRequestException($"API call failed with status code: {r.StatusCode}");
-        }
-
+        r.EnsureSuccessStatusCode();
         var json = await r.Content.ReadAsStreamAsync();
         var animals = await JsonSerializer.DeserializeAsync<List<Animal>>(json);
 
