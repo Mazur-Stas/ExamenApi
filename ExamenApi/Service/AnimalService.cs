@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamenApi.Core.Models;
 using Microsoft.EntityFrameworkCore;
+using ExamenApi.Storage.Repository;
 
 namespace ExamenApi.Service;
 
@@ -15,6 +16,11 @@ namespace ExamenApi.Service;
     private readonly IAnimalRepository _animalRepository;
     private readonly LoggerService _logger;
 
+    public AnimalService()
+    {
+        _animalRepository = new AnimalRepository();
+        _logger = new LoggerService();
+    }
     public AnimalService(IAnimalRepository animalRepository, LoggerService logger)
     {
         _animalRepository = animalRepository;

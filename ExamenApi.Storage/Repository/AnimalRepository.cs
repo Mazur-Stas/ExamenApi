@@ -12,6 +12,10 @@ public class AnimalRepository : IAnimalRepository
 {
     private readonly AnimalContext  _context;
 
+    public AnimalRepository()
+    {
+        _context = new AnimalContext();
+    }
     public AnimalRepository(AnimalContext context)
     {
         _context = context;

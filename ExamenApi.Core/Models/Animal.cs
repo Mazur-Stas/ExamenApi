@@ -26,5 +26,6 @@ namespace ExamenApi.Core.Models
 
         [JsonPropertyName("common_name")]
         public string CommonName { get; set; }
+
     }
 }

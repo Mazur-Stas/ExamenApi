@@ -10,17 +10,7 @@ namespace ExamenApi
     {
         static async Task Main(string[] args)
         {
-            var context = new AnimalContext();
-            var repository = new AnimalRepository(context);
-            var logger = new LoggerService();
-
-            using var client = new HttpClient();
-            var api = new AnimalApiService(client,logger);
-
-            AnimalService service = new AnimalService(repository,logger);
-
-            ServiceMenu menu = new ServiceMenu(api,service);
-            //Menu
+            ServiceMenu menu = new ServiceMenu();
 
             await menu.Menu();
 
